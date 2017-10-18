@@ -1,8 +1,12 @@
 all:
-	gcc -o test linked_list.c main.c
+	gcc -o exec linked_list.c main.c
 
 run: all
-	./test
+	./exec
+
+valgrind:
+	gcc -g linked_list.c main.c
+	valgrind --leak-check=yes ./a.out
 
 clean:
 	rm *~
