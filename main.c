@@ -12,11 +12,12 @@ int main() {
   printf("Setting song name to 'Shape of You'...\n");
   strcpy(head->name, "Shape of You");
   strcpy(head->artist, "Ed Sheeran");
+  head =insert_front(head, "Airplanes", "B.O.B");
 
   print_list(head);
 
   printf("Inserting song 'Test'...\n");
-  head = insert_front(head, "Test", "test");
+  head = insert_order(head, "Test", "test");
   
   print_list(head);
 

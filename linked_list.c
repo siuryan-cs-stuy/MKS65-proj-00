@@ -34,16 +34,23 @@ struct node * free_list(struct node *head) {
 }
 //helper funtion to compare two nodes
 int nodecmp(struct node *first, struct node *second){
-  if !(strcmp(first->name, second->name))
-    return strcmp(first->artist, second->artist)
+  printf("MADE %d\n", strcmp(first->name, second->name));
+  if (strcmp(first->name, second->name) != 0)
+    printf("HERE\n");
+    return strcmp(first->artist, second->artist);
   return strcmp(first->name, second->name); 
 }
 
 struct node * insert_order(struct node *head, char *name, char *artist){
   struct node *temp = (struct node*) malloc(sizeof(struct node));
-  while(nodecmp(head, temp) > 0){
+  strcpy(temp->name, name);
+  strcpy(temp->artist, artist);
+  printf("HERE!\n");
+  while(temp->next != 0 && nodecmp(head, temp) < 0){
+    printf("LOOKIE HERE: %d\n",(nodecmp(head,temp)));
     temp = temp->next;
   }
   head->next = temp->next;
   temp->next = head;
+  return head;
 }
