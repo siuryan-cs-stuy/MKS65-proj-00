@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-
 #include "linked_list.h"
+#include "music_player.h"
 
 int main() {
   srand(time(NULL));
@@ -14,11 +10,10 @@ int main() {
   printf("=============================\n");
   printf("TESTING LINKED LIST FUNCTIONS\n");
   printf("=============================\n");
-
   printf("\n");
+
   printf("Creating linked list...\n");
   printf("Setting song name to 'Shape of You'...\n");
-  //first song in list
   strcpy(head->name, "Shape of You");
   strcpy(head->artist, "Ed Sheeran");
   head->next = 0;
@@ -32,6 +27,9 @@ int main() {
   
   printf("Inserting song 'Galway Girl'...\n");
   head = insert_order(head, "Galway Girl", "Ed Sheeran");
+
+  printf("Inserting song 'Zoo'...\n");
+  head = insert_order(head, "Zoo", "Zoo");
 
   printf("Inserting song 'Chocolate'...\n");
   head = insert_order(head, "Chocolate", "Chocolate");
@@ -62,6 +60,26 @@ int main() {
   printf("Getting random song\n");
   song = random_node(head);
   printf("%s by %s\n", song->name, song->artist);
+  printf("\n");
+
+  printf("Removing song 'Galway Girl'...\n");
+  head = remove_node(head, find_song(head, "Galway Girl"));
+  print_list(head);
+  printf("\n");
+
+  printf("Freeing memory from head pointer...\n");
+  head = free_list(head);
+  
+
+  printf("=============================\n");
+  printf("TESTING LINKED LIST FUNCTIONS\n");
+  printf("=============================\n");
+  printf("\n");
+
+  printf("Creating music collection...\n");
+  printf("Adding 'Shape of You'...\n");
+  //add_song("Shape of You", "Ed Sheeran");
+  //print_library();
   printf("\n");
   
   printf("Freeing memory from head pointer...\n");

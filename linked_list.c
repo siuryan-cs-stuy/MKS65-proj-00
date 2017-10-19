@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-
 #include "linked_list.h"
 
 void print_list(struct node *head) {
@@ -34,8 +29,7 @@ struct node * free_list(struct node *head) {
   return 0;
 }
 
-//helper funtion to compare two nodes
-
+//helper funtion to compare two songs
 int songcmp(struct node *head, char *song, char *artist) {
   if (strcmp(head->artist, artist) == 0) {
     return strcmp(head->name, song);
@@ -61,6 +55,8 @@ struct node * insert_order(struct node *head, char *song, char *artist) {
       return temp;
     }
   }
+  trail->next = insert_front(head, song, artist);
+  return temp;
 }
 
 struct node * find_song(struct node *head, char *song) {
@@ -101,6 +97,19 @@ struct node * random_node(struct node *head) {
   return head;
 }
 
-struct node * remove_node(struct node *head) {
-  
+struct node * remove_node(struct node *head, struct node *song) {
+  struct node *trail = head;
+  struct node *temp = head;
+  while (temp) {
+    if (songcmp(temp, song->name, song->artist) != 0) {
+      trail = temp;
+      temp = temp->next;
+    }
+    else {
+      trail->next = song->next;
+      free(song);
+      return head;
+    }
+  }
+  return head;  
 }
