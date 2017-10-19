@@ -35,29 +35,41 @@ struct node * free_list(struct node *head) {
 
 //helper funtion to compare two nodes
 int nodecmp(struct node *first, struct node *second){
-  printf("MADE %d\n", strcmp(first->name, second->name));
-  if (strcmp(first->name, second->name) != 0)
-    printf("HERE\n");
+  if (strcmp(first->name, second->name) == 0){
     return strcmp(first->artist, second->artist);
+  }
   return strcmp(first->name, second->name); 
+}
+struct node * insert_order(struct node *head, char *song, char *artist){
+  //set up the new node first
+  struct node *new = (struct node*) malloc(sizeof(struct node));
+  strcpy(new->name, song);
+  strcpy(new->artist, artist);
+  new->next = 0;
+  //in case new node has to become first
+  if(head == 0 || nodecmp(head, new) > 0){
+    new->next = head;
+    return new;
+  }
+  //only 1 in list and it's smaller
+  if(head->next == 0){
+    head->next = new;
+    return head;
+  }
+  //so we can iterate w/o losing head pointer
+
+  struct node *temp = (struct node*) malloc(sizeof(struct node));
+  temp = head;
+  //if the next one is greater, insert after the one it's at rn
+  while(temp->next != 0 && nodecmp(temp->next, new) < 0){
+    temp = temp->next;
+  }
+  new->next = temp->next;
+  temp->next = new;
+  return head;
 }
 
 /*
-struct node * insert_order(struct node *head, char *name, char *artist){
-  struct node *temp = (struct node*) malloc(sizeof(struct node));
-  strcpy(temp->name, name);
-  strcpy(temp->artist, artist);
-  printf("HERE!\n");
-  while(temp->next != 0 && nodecmp(head, temp) < 0){
-    printf("LOOKIE HERE: %d\n",(nodecmp(head,temp)));
-    temp = temp->next;
-  }
-  head->next = temp->next;
-  temp->next = head;
-  return head;
-}
-*/
-
 struct node * insert_order(struct node *head, char *song, char *artist) {
   struct node *temp = head;
   struct node *trail = head;
@@ -96,6 +108,8 @@ struct node * insert_order(struct node *head, char *song, char *artist) {
     }
   }
 }
+*/
+
 
 struct node * find_song(struct node *head, char *song) {
   while (head) {

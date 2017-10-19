@@ -15,24 +15,50 @@ int main() {
   printf("\n");
   printf("Creating linked list...\n");
   printf("Setting song name to 'Shape of You'...\n");
+  //first song in list
   strcpy(head->name, "Shape of You");
   strcpy(head->artist, "Ed Sheeran");
-
-  head =insert_front(head, "Airplanes", "B.O.B");
-
   head->next = 0;
-
 
   print_list(head);
   printf("\n");
   
+  printf("Inserting song 'Airplanes'...\n");
+  head = insert_order(head, "Airplanes", "B.O.B");
+  
+  print_list(head);
+  printf("\n");
+
   printf("Inserting song 'Galway Girl'...\n");
   head = insert_order(head, "Galway Girl", "Ed Sheeran");
-
+  print_list(head);
+  printf("\n");
+  
   printf("Inserting song 'Best'...\n");
   head = insert_order(head, "Best", "Best");
+  print_list(head);
+  printf("\n");
+  
+  printf("Inserting song 'Yah'...\n");
+  head = insert_order(head, "Yah", "Kendrick Lamar");
+  print_list(head);
+  printf("\n");
+  
+  printf("Inserting song 'About a Girl'...\n");
+  head = insert_order(head, "About a Girl", "Nirvana");
+  print_list(head);
+  printf("\n");
 
+  printf("Inserting song 'Around the World'...\n");
+  head = insert_order(head, "Around the World", "Daft Punk");
+  print_list(head);
+  printf("\n");
 
+  printf("Inserting song 'Around the World'...\n");
+  head = insert_order(head, "Around the World", "ATC");
+  print_list(head);
+  printf("\n");
+  /*
   printf("Inserting song 'Test'...\n");
   head = insert_order(head, "Test", "test");
 
@@ -42,7 +68,7 @@ int main() {
   
   print_list(head);
   printf("\n");
-
+  */
   /*
   printf("Finding song 'Test'...\n");
   print_list(find_song(head, "Test"));
