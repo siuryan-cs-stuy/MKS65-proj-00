@@ -34,10 +34,11 @@ struct node * free_list(struct node *head) {
 }
 
 //helper funtion to compare two nodes
-int nodecmp(struct node *first, struct node *second){
-  if !(strcmp(first->name, second->name))
-    return strcmp(first->artist, second->artist)
-  return strcmp(first->name, second->name); 
+int songcmp(struct node *head, char *song, char *artist) {
+  if (strcmp(head->artist, artist) == 0) {
+    return strcmp(head->name, song);
+  }
+  return strcmp(head->artist, artist);
 }
 
 /*
@@ -54,33 +55,15 @@ struct node * insert_order(struct node *head, char *name, char *artist){
 struct node * insert_order(struct node *head, char *song, char *artist) {
   struct node *temp = head;
   struct node *trail = head;
-  head = head->next;
-  if (!head) {
-    if (strcmp(trail->artist, artist) > 0) {
-      return insert_front(trail, song, artist);
-    }
-    else {
-      trail->next= insert_front(head, song, artist);
-      return temp;
-    }
+  if (songcmp(head, song, artist) > 0) {
+    struct node *test = insert_front(head, song, artist);
+    return test;
   }
   while (head) {
-    if (strcmp(head->artist, artist) == 0) {
-      if (strcmp(head->name, song) < 0) {
-	// continue
-	head = head->next;
-	trail = trail->next;
-      }
-      else {
-	// insert before head
-	trail->next = insert_front(head, song, artist);
-	return temp;
-      }
-    }
-    else if (strcmp(head->artist, artist) < 0) {
+    if (songcmp(head, song, artist) < 0) {
       // continue
+      trail = head;
       head = head->next;
-      trail = trail->next;
     }
     else {
       // insert before head

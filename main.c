@@ -24,10 +24,20 @@ int main() {
   
   printf("Inserting song 'Galway Girl'...\n");
   head = insert_order(head, "Galway Girl", "Ed Sheeran");
+  print_list(head);
+
+  printf("Inserting song 'Chocolate'...\n");
+  head = insert_order(head, "Chocolate", "Chocolate");
+  print_list(head);
+
+  printf("Inserting song 'Alpha'...\n");
+  head = insert_order(head, "Alpha", "Alpha");
+  print_list(head);
 
   printf("Inserting song 'Best'...\n");
   head = insert_order(head, "Best", "Best");
-
+  print_list(head);
+  
   printf("Inserting song 'Perfect'...\n");
   head = insert_order(head, "Perfect", "Ed Sheeran");
   
