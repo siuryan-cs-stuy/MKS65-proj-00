@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "linked_list.h"
 
@@ -80,4 +81,26 @@ struct node * find_artist(struct node *head, char *artist) {
     head = head->next;
   }
   return 0;
+}
+
+int length(struct node *head) {
+  int i = 0;
+  while (head) {
+    i++;
+    head = head->next;
+  }
+  return i;
+}
+
+struct node * random_node(struct node *head) {
+  int node_num = rand() % length(head);
+  while (node_num > 0) {
+    head = head->next;
+    node_num--;
+  }
+  return head;
+}
+
+struct node * remove_node(struct node *head) {
+  
 }
