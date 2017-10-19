@@ -2,9 +2,10 @@
 #include "music_player.h"
 
 // Add song
-
 void add_song(char *song, char *artist) {
-  
+  char letter = tolower(song[0]);
+  char a = 'a';
+  library[letter-a] = insert_order(library[letter-a], song, artist);
 }
 
 // Search for a song
@@ -29,7 +30,7 @@ void print_artist(char *artist) {
 
 // Print out the entire library
 void print_library() {
-
+  
 }
 
 // Print out a series of randomly chosen songs

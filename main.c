@@ -78,7 +78,7 @@ int main() {
 
   printf("Creating music collection...\n");
   printf("Adding 'Shape of You'...\n");
-  //add_song("Shape of You", "Ed Sheeran");
+  add_song("Shape of You", "Ed Sheeran");
   //print_library();
   printf("\n");
   
