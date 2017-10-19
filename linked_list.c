@@ -34,23 +34,13 @@ struct node * free_list(struct node *head) {
 }
 
 //helper funtion to compare two nodes
+
 int songcmp(struct node *head, char *song, char *artist) {
   if (strcmp(head->artist, artist) == 0) {
     return strcmp(head->name, song);
   }
   return strcmp(head->artist, artist);
 }
-
-/*
-struct node * insert_order(struct node *head, char *name, char *artist){
-  struct node *temp = (struct node*) malloc(sizeof(struct node));
-  while(nodecmp(head, temp) > 0){
-    temp = temp->next;
-  }
-  head->next = temp->next;
-  temp->next = head;
-}
-*/
 
 struct node * insert_order(struct node *head, char *song, char *artist) {
   struct node *temp = head;
