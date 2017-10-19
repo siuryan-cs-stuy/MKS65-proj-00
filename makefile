@@ -1,5 +1,5 @@
 all:
-	gcc -o exec linked_list.c main.c
+	gcc -o exec linked_list.c main.c music_player.c
 
 run: all
 	./exec
@@ -13,6 +13,6 @@ clean:
 	clear
 
 cleanall:
-	rm test
+	rm exec
 	rm *~
 	clear

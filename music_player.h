@@ -9,10 +9,10 @@ struct node * library[26];
 void add_song(char *, char *);
 
 // Search for a song
-struct song_node * search_song(char *);
+struct node * search_song(char *);
 
 // Search for an artist
-struct song_node * search_artist(char *);
+struct node * search_artist(char *);
 
 // Print out all the entries under a certain letter
 void print_letter(char);

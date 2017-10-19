@@ -52,7 +52,7 @@ int main() {
   printf("Finding artist 'Ed Sheeran'...\n");
   print_list(find_artist(head, "Ed Sheeran"));
   printf("\n");
-
+  
   printf("Getting random song\n");
   struct node *song = random_node(head);
   printf("%s by %s\n", song->name, song->artist);
@@ -61,7 +61,7 @@ int main() {
   song = random_node(head);
   printf("%s by %s\n", song->name, song->artist);
   printf("\n");
-
+  
   printf("Removing song 'Galway Girl'...\n");
   head = remove_node(head, find_song(head, "Galway Girl"));
   print_list(head);
@@ -69,21 +69,84 @@ int main() {
 
   printf("Freeing memory from head pointer...\n");
   head = free_list(head);
-  
+  print_list(head);
+
 
   printf("=============================\n");
   printf("TESTING LINKED LIST FUNCTIONS\n");
   printf("=============================\n");
   printf("\n");
 
+  //fill up library as well as test add_song & print_library
   printf("Creating music collection...\n");
+  printf("Adding 'Around The World'...\n");
+  add_song("Around The World", "Daft Punk");
   printf("Adding 'Shape of You'...\n");
   add_song("Shape of You", "Ed Sheeran");
-  //print_library();
+  print_library();
+  printf("\n");
+  printf("Adding 'Chocolate'...\n");
+  add_song("Chocolate", "Chocolate");
+  printf("Adding 'Alpha'...\n");
+  add_song("Alpha", "Alpha");
+  printf("Adding 'Galway Girl'...\n");
+  add_song("Galway Girl", "Ed Sheeran");
+  printf("Adding 'Best'...\n");
+  add_song("Best", "Best");
+  printf("Adding 'Around The World'...\n");
+  add_song("Around The World", "Red Hot Chili Peppers");
+  printf("Adding 'Airplanes'...\n");
+  add_song("Airplanes", "B.O.B");
+  printf("Adding 'Bailando'...\n");
+  add_song("Bailando", "Enrique Iglesias");
+  print_library();
+  printf("\n");
+
+  //search_artist
+  printf("Searching song by 'Best'...\n");
+  print_list(search_artist("Best"));
+  printf("Searching song by 'Ed Sheeran'...\n");
+  print_list(search_artist("Ed Sheeran"));
+  printf("Searching song by 'Alpha'...\n");
+  print_list(search_artist("Alpha"));
+  printf("Searching song by 'Taylor Swift'...\n");
+  print_list(search_artist("Taylor Swift"));
+  printf("\n");
+
+  printf("Searching song by 'Best'...\n");
+  print_list(search_artist("Best"));
+  printf("Searching song by 'Ed Sheeran'...\n");
+  print_list(search_artist("Ed Sheeran"));
+  printf("Searching song by 'Alpha'...\n");
+  print_list(search_artist("Alpha"));
+  printf("Searching song by 'Taylor Swift'...\n");
+  print_list(search_artist("Taylor Swift"));
+  
   printf("\n");
   
+  //printing each letter:
+  char c;
+  for(c = 'A'; c <= 'Z'; ++c){
+    printf("Letter %c: ", c);
+    print_letter(c);
+  }
+  printf("\n");
+
+  //print only songs by artist
+  printf("Searching for all songs by 'Ed Sheeran'...\n");
+  print_artist("Ed Sheeran");
+  printf("Searching for all songs by 'Best'...\n");
+  print_artist("Best");
+  printf("Searching for all songs by 'Taylor Swift'...\n");
+  print_artist("Taylor Swift");
+  printf("\n");
+  
+  
+  //i think you need to test with delete_all instead..
+  /* 
   printf("Freeing memory from head pointer...\n");
   head = free_list(head);
-  
+ 
   return 0;
+  */
 }

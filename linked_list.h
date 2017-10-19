@@ -19,3 +19,5 @@ struct node * random_node(struct node *);
 struct node * remove_node(struct node *, struct node *);
 int length(struct node *);
 int songcmp(struct node *, char *, char *);
+
+void print_listh(struct node *head);
