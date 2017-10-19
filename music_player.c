@@ -29,7 +29,12 @@ void print_artist(char *artist) {
 
 // Print out the entire library
 void print_library() {
-
+  printf("[");
+  int i = 0;
+  for(i = 0; i < 26; i++){
+    print_listh(library[i]);
+  }
+  printf("]\n");
 }
 
 // Print out a series of randomly chosen songs

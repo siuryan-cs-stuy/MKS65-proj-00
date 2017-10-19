@@ -8,6 +8,13 @@ void print_list(struct node *head) {
   }
   printf("]\n");
 }
+//helper print function
+void print_listh(struct node *head) {
+  while (head) {
+    printf("%s by %s, ", head->name, head->artist);
+    head = head->next;
+  }
+}
 
 struct node * insert_front(struct node *head, char *name, char *artist) {
   struct node *new_head = (struct node*) malloc(sizeof(struct node));
