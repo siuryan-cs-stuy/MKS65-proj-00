@@ -56,8 +56,7 @@ struct node * insert_order(struct node *head, char *song, char *artist) {
   struct node *temp = head;
   struct node *trail = head;
   if (songcmp(head, song, artist) > 0) {
-    struct node *test = insert_front(head, song, artist);
-    return test;
+    return insert_front(head, song, artist);
   }
   while (head) {
     if (songcmp(head, song, artist) < 0) {
