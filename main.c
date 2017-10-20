@@ -79,7 +79,7 @@ int main() {
   printf("Creating music collection...\n");
   printf("Adding 'Shape of You'...\n");
   add_song("Shape of You", "Ed Sheeran");
-  //print_library();
+  print_library();
   printf("\n");
   
   printf("Freeing memory from head pointer...\n");
