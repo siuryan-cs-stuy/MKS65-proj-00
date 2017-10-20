@@ -3,6 +3,7 @@
 #include "linked_list.h"
 #include "music_player.h"
 
+// Get the index of the library
 int get_slot(char *artist) {
   return tolower(artist[0]) - 'a';
 }

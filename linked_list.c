@@ -1,12 +1,13 @@
 #include "linked_list.h"
 
+// Prints a list of nodes given head pointer
 void print_list(struct node *head) {
   printf("[");
   print_listh(head);
   printf("]\n");
 }
 
-//helper print function
+// Helper print function
 void print_listh(struct node *head) {
   while (head) {
     printf("%s by %s, ", head->name, head->artist);
@@ -14,6 +15,7 @@ void print_listh(struct node *head) {
   }
 }
 
+// Inserts node in front of linked list
 struct node * insert_front(struct node *head, char *name, char *artist) {
   struct node *new_head = (struct node*) malloc(sizeof(struct node));
   new_head->next = head;
@@ -23,6 +25,7 @@ struct node * insert_front(struct node *head, char *name, char *artist) {
   return new_head;
 }
 
+// Frees the memory for a linked list
 struct node * free_list(struct node *head) {
   while (head) {
     struct node *next = head->next;
@@ -32,7 +35,7 @@ struct node * free_list(struct node *head) {
   return 0;
 }
 
-//helper funtion to compare two songs
+// Compares two songs
 int songcmp(struct node *head, char *song, char *artist) {
   if (strcmp(head->artist, artist) == 0) {
     return strcmp(head->name, song);
@@ -40,6 +43,8 @@ int songcmp(struct node *head, char *song, char *artist) {
   return strcmp(head->artist, artist);
 }
 
+// Insert node into its proper place in the linked list
+// Assumes that the list is already properly ordered
 struct node * insert_order(struct node *head, char *song, char *artist) {
   struct node *temp = head;
   struct node *trail = head;
@@ -62,6 +67,7 @@ struct node * insert_order(struct node *head, char *song, char *artist) {
   return temp;
 }
 
+// Finds and returns the pointer to a song
 struct node * find_song(struct node *head, char *song) {
   while (head) {
     if (strcmp(head->name, song) == 0) {
@@ -72,6 +78,7 @@ struct node * find_song(struct node *head, char *song) {
   return 0;
 }
 
+// Finds and returns the pointer to the first song with the specified artist
 struct node * find_artist(struct node *head, char *artist) {
   while (head) {
     if (strcmp(head->artist, artist) == 0) {
@@ -82,6 +89,7 @@ struct node * find_artist(struct node *head, char *artist) {
   return 0;
 }
 
+// Returns the length of the linked list
 int length(struct node *head) {
   int i = 0;
   while (head) {
@@ -91,6 +99,7 @@ int length(struct node *head) {
   return i;
 }
 
+// Returns a pointer to a random node
 struct node * random_node(struct node *head) {
   int node_num = 0;
   if (length(head) > 0) {
@@ -103,6 +112,7 @@ struct node * random_node(struct node *head) {
   return head;
 }
 
+// Removes a node from the linked list
 struct node * remove_node(struct node *head, struct node *song) {
   struct node *trail = head;
   struct node *temp = head;
