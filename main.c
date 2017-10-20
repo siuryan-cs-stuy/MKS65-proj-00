@@ -138,6 +138,10 @@ int main() {
   print_list(search_song("DNE", "abc"));
   printf("\n");
 
+  printf("Shuffling...\n");
+  shuffle(10);
+  printf("\n");
+  
   printf("Removing song 'Shape of You' by Ed Sheeran...\n");
   delete("Shape of You", "Ed Sheeran");
   print_letter('E');

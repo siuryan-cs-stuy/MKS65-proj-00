@@ -92,7 +92,10 @@ int length(struct node *head) {
 }
 
 struct node * random_node(struct node *head) {
-  int node_num = rand() % length(head);
+  int node_num = 0;
+  if (length(head) > 0) {
+    node_num = rand() % length(head);
+  }
   while (node_num > 0) {
     head = head->next;
     node_num--;

@@ -1,6 +1,7 @@
+#include <ctype.h>
+
 #include "linked_list.h"
 #include "music_player.h"
-#include <ctype.h>
 
 int get_slot(char *artist) {
   return tolower(artist[0]) - 'a';
@@ -64,7 +65,17 @@ void print_library() {
 
 // Print out a series of randomly chosen songs
 void shuffle(int num) {
-  
+  int rand_letter = rand() % 26;
+  printf("[");
+  while (num > 0) {
+    struct node *temp = random_node(library[rand_letter]);
+    if (temp) {
+      printf("%s by %s,", temp->name, temp->artist);
+      num--;
+    }
+    rand_letter = rand() % 26;
+  }
+  printf("]");
 }
 
 // Delete a song
@@ -78,8 +89,8 @@ void delete(char *song, char *artist) {
 
 // Delete all the nodes
 void delete_all() {
-  char c;
-  for (c = 'A'; c <= 'Z'; ++c) {
-    library[c] = free_list(library[c]); 
+  int i;
+  for (i = 0; i < 26; i++) {
+    library[i] = free_list(library[i]); 
   }
 }
