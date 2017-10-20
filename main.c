@@ -114,16 +114,6 @@ int main() {
   print_list(search_artist("Taylor Swift"));
   printf("\n");
 
-  printf("Searching song by 'Best'...\n");
-  print_list(search_artist("Best"));
-  printf("Searching song by 'Ed Sheeran'...\n");
-  print_list(search_artist("Ed Sheeran"));
-  printf("Searching song by 'Alpha'...\n");
-  print_list(search_artist("Alpha"));
-  printf("Searching song by 'Taylor Swift'...\n");
-  print_list(search_artist("Taylor Swift"));
-  printf("\n");
-  
   //printing each letter:
   char c;
   for(c = 'A'; c <= 'Z'; ++c){
@@ -141,12 +131,25 @@ int main() {
   print_artist("Taylor Swift");
   printf("\n");
   
+  printf("Finding song 'Shape of You' by Ed Sheeran...\n");
+  print_list(search_song("Shape of You", "Ed Sheeran"));
   
-  //i think you need to test with delete_all instead..
-  /* 
-  printf("Freeing memory from head pointer...\n");
-  head = free_list(head);
- 
+  printf("Finding song 'DNE' by abc...\n");
+  print_list(search_song("DNE", "abc"));
+  printf("\n");
+
+  printf("Removing song 'Shape of You' by Ed Sheeran...\n");
+  delete("Shape of You", "Ed Sheeran");
+  print_letter('E');
+  
+  printf("Removing song 'DNE' by abc...\n");
+  delete("DNE", "abc");
+  print_library();
+  printf("\n");
+
+  printf("Deleting all songs...\n");
+  delete_all();
+  printf("\n");
+  
   return 0;
-  */
 }

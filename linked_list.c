@@ -2,12 +2,10 @@
 
 void print_list(struct node *head) {
   printf("[");
-  while (head) {
-    printf("%s by %s, ", head->name, head->artist);
-    head = head->next;
-  }
+  print_listh(head);
   printf("]\n");
 }
+
 //helper print function
 void print_listh(struct node *head) {
   while (head) {
@@ -26,13 +24,11 @@ struct node * insert_front(struct node *head, char *name, char *artist) {
 }
 
 struct node * free_list(struct node *head) {
-  struct node *temp = head;
-  while (temp->next) {
-    struct node *next = temp->next;
-    free(temp);
-    temp = next;
+  while (head) {
+    struct node *next = head->next;
+    free(head);
+    head = next;
   }
-  free(temp);
   return 0;
 }
 

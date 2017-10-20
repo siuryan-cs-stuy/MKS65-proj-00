@@ -2,16 +2,21 @@
 #include "music_player.h"
 #include <ctype.h>
 
+int get_slot(char *artist) {
+  return tolower(artist[0]) - 'a';
+}
+
 // Add song
 void add_song(char *song, char *artist) {
-  char letter = tolower(artist[0]);
-  char a = 'a';
-  library[letter-a] = insert_order(library[letter-a], song, artist);
+  int slot = get_slot(artist);
+  library[slot] = insert_order(library[slot], song, artist);
 }
 
 // Search for a song
-struct node * search_song(char *song) {
-
+struct node * search_song(char *song, char *artist) {
+  int slot = get_slot(artist);
+  struct node *temp = find_song(library[slot], song);
+  return temp;
 }
 
 // Search for an artist
@@ -59,15 +64,22 @@ void print_library() {
 
 // Print out a series of randomly chosen songs
 void shuffle(int num) {
-
+  
 }
 
 // Delete a song
-void delete(char *song) {
-
+void delete(char *song, char *artist) {
+  int slot = get_slot(artist);
+  struct node *temp = search_song(song, artist);
+  if (temp) {
+    library[slot] = remove_node(library[slot], temp);
+  }
 }
 
 // Delete all the nodes
 void delete_all() {
-
+  char c;
+  for (c = 'A'; c <= 'Z'; ++c) {
+    library[c] = free_list(library[c]); 
+  }
 }

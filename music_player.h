@@ -5,11 +5,14 @@
 
 struct node * library[26];
 
+// Get index of library based on artist name
+int get_slot(char *);
+
 // Add song
 void add_song(char *, char *);
 
 // Search for a song
-struct node * search_song(char *);
+struct node * search_song(char *, char *);
 
 // Search for an artist
 struct node * search_artist(char *);
@@ -27,7 +30,7 @@ void print_library();
 void shuffle(int);
 
 // Delete a song
-void delete(char *);
+void delete(char *, char*);
 
 // Delete all the nodes
 void delete_all();
